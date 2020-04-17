@@ -1,3 +1,29 @@
 .App {
   text-align: center;
 }
+
+.DisplayCard{
+  display:flex;
+  justify-content: center;
+  margin: 2%;
+  flex-wrap: wrap;
+}
+
+.SingleCard{
+  margin: 2%;
+  padding: 2%;
+  background-color: rgba(200,100,100, 0.6);
+  color: white;
+  border-radius: 30px;
+}
+
+html{
+background-image: url('../images/smurf.jpg');
+background-repeat: no-repeat;
+background-position: center;
+background-color:  rgba(100, 100, 100);
+}
+
+h4{
+  color: rgba(200,100,100)
+}
