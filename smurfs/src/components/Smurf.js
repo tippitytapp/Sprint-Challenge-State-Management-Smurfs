@@ -1,20 +1,20 @@
 import React from "react";
 
-const SingleCard = ({ data, removeSmurf }) => {
+const Smurf = ({ data, removeSmurf }) => {
   return (
     <div className="SingleCard">
       <p>
-        name: <span>{data.name}</span>
+        Name: <span>{data.name}</span>
       </p>
       <p>
-        age:<span>{data.age}</span>
+        Age: <span>{data.age}yrs</span>
       </p>
       <p>
-        heigth: <span>{data.height}</span>
+        Height: <span>{data.height}cm</span>
       </p>
-      <button onClick={removeSmurf}>remove</button>
+      <button onClick={removeSmurf}>Move Out</button>
     </div>
   );
 };
 
-export default SingleCard;
+export default Smurf;

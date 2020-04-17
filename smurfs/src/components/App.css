@@ -1,3 +1,14 @@
 .App {
   text-align: center;
 }
+
+.DisplayCard{
+  display:flex;
+  justify-content: center;
+  margin: 2%;
+}
+
+.SingleCard{
+  margin: 2%;
+
+}

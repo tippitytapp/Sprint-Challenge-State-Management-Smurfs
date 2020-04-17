@@ -40,7 +40,7 @@ const AddSmurfForm = () => {
                 placeholder="height"
               />
             </label>
-            <button type="submit">Submit</button>
+            <button type="submit">Add To Village</button>
           </Form>
         )}
       </Formik>

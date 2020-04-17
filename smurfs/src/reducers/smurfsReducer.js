@@ -4,7 +4,7 @@ const initialValue = {
     error: "",
   };
   
-  export const dataReducer = (state = initialValue, action) => {
+  export const smurfsReducer = (state = initialValue, action) => {
     switch (action.type) {
       case "FETCHING_DATA":
         return {

@@ -1,11 +1,11 @@
 import React from "react";
-import SingleCard from "./Smurf";
+import Smurf from "./Smurf";
 
-const DisplayCards = ({ data, removeSmurf }) => {
+const Smurfs = ({ data, removeSmurf }) => {
   return (
     <div className="DisplayCard">
       {data.map((item) => (
-        <SingleCard
+        <Smurf
           key={item.id}
           data={item}
           removeSmurf={() => removeSmurf(item.id)}
@@ -15,4 +15,4 @@ const DisplayCards = ({ data, removeSmurf }) => {
   );
 };
 
-export default DisplayCards;
+export default Smurfs;

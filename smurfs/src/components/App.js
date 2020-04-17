@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import MainForm from "./addSmurf";
-import DisplayCards from "./Smurfs";
+import AddSmurfForm from "./addSmurf";
+import Smurfs from "./Smurfs";
 import "./App.css";
 
 const App = () => {
@@ -10,7 +10,7 @@ const App = () => {
   const reducer = useSelector((state) => ({
     ...state,
   }));
-  const { data, loading } = reducer.dataReducer;
+  const { data, loading } = reducer.smurfsReducer;
 
   useEffect(() => {
     dispatch({ type: "FETCHING_DATA" });
@@ -43,9 +43,11 @@ const App = () => {
   };
   return (
     <div className="App">
-      <MainForm />
+      <h1>Welcome to SMURF Village</h1>
+      <h4>New SMURF moving in?</h4>
+      <AddSmurfForm />
       {!loading ? (
-        <DisplayCards data={data} removeSmurf={removeSmurf} />
+        <Smurfs data={data} removeSmurf={removeSmurf} />
       ) : (
         <h1 className="loading">loading...</h1>
       )}
