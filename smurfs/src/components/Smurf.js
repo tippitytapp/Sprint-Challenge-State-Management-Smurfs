@@ -7,9 +7,9 @@ const Smurf = props => {
         {props.smurfs.map(item => {
             return (
                 <div className="smurfMapDiv">
-                    <h3>{item.name}</h3>
-                    <h4>{item.age}</h4>
-                    <h4>{item.height}</h4>
+                    <h3>Name: {item.name}</h3>
+                    <h4>Age: {item.age}</h4>
+                    <h4>Height: {item.height}</h4>
                 </div>
             )
         })}
