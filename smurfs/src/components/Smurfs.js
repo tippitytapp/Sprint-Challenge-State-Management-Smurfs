@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {fetchSmurfs}  from '../actions/smurfsActions';
+import {fetchSmurfs}  from '../actions/smurfActions';
 import Smurf from './Smurf'
 
 const Smurfs = props => {
@@ -19,7 +19,7 @@ return (
 }
 
 const mapStateToProps = state => {
-    console.log('smurfs mapstatetoprops console', state.smurfsReducer)
+    console.log('smurfs mapstatetoprops console',state)
     return{
         smurfs: state.smurfsReducer.smurfs,
         isFetching: state.smurfsReducer.isFetching,
