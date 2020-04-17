@@ -46,6 +46,7 @@ const App = () => {
       <h1>Welcome to SMURF Village</h1>
       <h4>New SMURF moving in?</h4>
       <AddSmurfForm />
+      <h4> Our Community ...</h4>
       {!loading ? (
         <Smurfs data={data} removeSmurf={removeSmurf} />
       ) : (
