@@ -1,6 +1,6 @@
 import React from "react";
 
-const SingleCard = ({ data, removeSmurf }) => {
+const RemoveSmurf = ({ data, removeSmurf }) => {
   return (
     <div className="SingleCard">
       <p>
@@ -17,4 +17,4 @@ const SingleCard = ({ data, removeSmurf }) => {
   );
 };
 
-export default SingleCard;
+export default RemoveSmurf;

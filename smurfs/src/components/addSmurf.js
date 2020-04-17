@@ -1,43 +1,51 @@
-import React, {useState} from 'react';
-import {connect} from 'react-redux';
-import {addSmurfs} from '../actions/smurfActions';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { Formik, Form, Field } from "formik";
+import axios from "axios";
 
+const AddSmurfForm = () => {
+  const dispatch = useDispatch();
+  return (
+    <div className="form">
+      <Formik
+        initialValues={{ name: "", age: "", height: "" }}
+        onSubmit={(values, { resetForm }) => {
+          const { name, age, height } = values;
+          const obj = {
+            name,
+            age,
+            height,
+            id: new Date().toLocaleTimeString(),
+          };
+          dispatch({ type: "FETCHING_NEW_DATA" });
+          axios.post("http://localhost:3333/smurfs", obj).then((res) => {
+            dispatch({ type: "ADDED_DATA", payload: res.data });
+          });
+          resetForm();
+        }}
+      >
+        {() => (
+          <Form>
+            <label htmlFor="name">
+              <Field type="text" name="name" id="name" placeholder="name" />
+            </label>
+            <label htmlFor="age">
+              <Field type="text" name="age" id="age" placeholder="age" />
+            </label>
+            <label htmlFor="height">
+              <Field
+                type="text"
+                name="height"
+                id="height"
+                placeholder="height"
+              />
+            </label>
+            <button type="submit">Submit</button>
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
+};
 
-const AddSmurfForm = props => {
-    const [formState, setFormState] = useState({name:"", age:"", height:"", id:Date.now()})
-    const inputChange = e => {
-        e.preventDefault();
-        const newFormData = {
-            ...formState, [e.target.name]: e.target.value
-        }
-        setFormState(newFormData)
-    }
-    return(
-        <>
-        <div className="addSmurfForm">
-        <form onSubmit={()=> props.addSmurfs(formState)}>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" onChange={inputChange} value={formState.name} placeholder="Name"/>
-            <label htmlFor="age">Age:</label>
-            <input type="text" id="age" name="age" onChange={inputChange} value={formState.age}placeholder="Age"/>
-            <label htmlFor="height">Height:</label>
-            <input type="text" id="height" name="height" onChange={inputChange} value={formState.height} placeholder="Height"/>
-            <button className="addSmurf">Add Smurf To Village</button>
-        </form>
-        </div>
-        </>
-    )
-}
-
-const mapStateToProps = state => {
-    return{
-        isFetching: state.smurfsReducer.isFetching,
-        error: state.smurfsReducer.error,
-        smurfs: state.smurfsReducer.smurfs
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    {addSmurfs}
-    )(AddSmurfForm)
+export default AddSmurfForm

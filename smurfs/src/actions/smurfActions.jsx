@@ -16,18 +16,24 @@ export const fetchSmurfs = () => {
     }
 }
 
-export const addSmurfs = (smurf) => {
+export const postSmurfs = (smurf) => {
     return dispatch => {
-        dispatch({type: 'ADD_SMURF_START'})
+        dispatch({type: 'POST_SMURF'})
         axios
             .post('https://localhost:3333/smurfs', smurf)
             .then(res => {
-                console.log(res);
-                dispatch({type: 'ADD_SMURF_SUCCESS', payload: smurf})
+                console.log('post request', res);
+                dispatch({type: 'POST_SMURF', payload: res.data})
           })
             .catch(err => {
                 console.log(err);
                 dispatch({type: 'ADD_SMURF_ERROR', payload: `ERROR: ${err}`})
             })
+    }
+}
+
+export function addSmurfs(name, age, height){
+    return (dispatch) => {
+        dispatch({type: 'ADD_SMURF', payload: {name, age, height}})
     }
 }

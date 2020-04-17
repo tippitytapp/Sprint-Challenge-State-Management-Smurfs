@@ -1,46 +1,60 @@
-export const initialState = {
-    smurfs:[],
-    isFetching: false,
-    error: ""
-}
-
-export const smurfsReducer = (state = initialState, action) => {
-    switch(action.type){
-        case 'FETCH_SMURFS_START':
-            return {
-                ...state,
-                isFetching: true
-            }
-        case 'FETCH_SMURFS_SUCCESS':
-            return {
-                ...state,
-                isFetching: false,
-                smurfs: action.payload
-            }
-        case 'FETCH_SMURFS_ERROR':
-            return {
-                ...state,
-                isFetching: false,
-                error: action.payload
-            }
-        case 'ADD_SMURF_START':
-            return {
-                ...state,
-                isFetching: true,
-            }
-        case 'ADD_SMURF_SUCCESS':
-            return {
-                ...state,
-                isFetching: false,
-                smurfs: [...state.smurfs, action.payload]
-            }
-        case 'ADD_SMURF_ERROR':
-            return {
-                ...state,
-                isFetching: false,
-                error: action.payload
-            }
-        default:
-            return state
+const initialValue = {
+    loading: false,
+    data: [],
+    error: "",
+  };
+  
+  export const dataReducer = (state = initialValue, action) => {
+    switch (action.type) {
+      case "FETCHING_DATA":
+        return {
+          ...state,
+          loading: true,
+        };
+      case "NEW_DATA":
+        return {
+          ...state,
+          loading: false,
+          data: action.payload,
+        };
+      case "ERROR":
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
+      case "FETCHING_NEW_DATA":
+        return {
+          ...state,
+          loading: true,
+        };
+  
+      case "ADDED_DATA":
+        return {
+          ...state,
+          loading: false,
+          data: action.payload,
+        };
+      //////////
+      case "REMOVING":
+        return {
+          ...state,
+          loading: true,
+        };
+      case "REMOVED_SMURF":
+        return {
+          ...state,
+          loading: false,
+          data: action.payload,
+        };
+      case "ERROR_REMOVING":
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
+  
+      default:
+        return state;
     }
-}
+  };
