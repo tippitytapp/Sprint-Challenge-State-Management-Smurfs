@@ -18,7 +18,7 @@ const AddSmurfForm = () => {
             id: new Date().toLocaleTimeString(),
           };
           dispatch({ type: "FETCHING_NEW_DATA" });
-          axios.post("http://localhost:3333/smurfs", obj).then((res) => {
+          axios.post("https://mt-smurfs.herokuapp.com/smurfs", obj).then((res) => {
             dispatch({ type: "ADDED_DATA", payload: res.data });
           });
           resetForm();

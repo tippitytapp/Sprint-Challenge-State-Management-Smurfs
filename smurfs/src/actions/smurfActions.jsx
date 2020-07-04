@@ -4,7 +4,7 @@ export const fetchSmurfs = () => {
     return dispatch => {
         dispatch ({type: 'FETCH_SMURFS_START'})
         axios
-            .get('http://localhost:3333/smurfs')
+            .get('https://mt-smurfs.herokuapp.com/smurfs')
             .then(res => {
                 console.log('fetchSmurfs axios call', res)
                 dispatch({type: 'FETCH_SMURFS_SUCCESS', payload: res.data})
@@ -20,7 +20,7 @@ export const postSmurfs = (smurf) => {
     return dispatch => {
         dispatch({type: 'POST_SMURF'})
         axios
-            .post('https://localhost:3333/smurfs', smurf)
+            .post('https://mt-smurfs.herokuapp.com/smurfs', smurf)
             .then(res => {
                 console.log('post request', res);
                 dispatch({type: 'POST_SMURF', payload: res.data})
